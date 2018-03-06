@@ -1,0 +1,21 @@
+.row1 {
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 400px;
+
+}
+.row2 {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 400px;
+
+}
+
+/*table.style {
+    text-family: "Times New Roman";
+    background-color: lightcyan;
+    color: darkblue;
+}*/
