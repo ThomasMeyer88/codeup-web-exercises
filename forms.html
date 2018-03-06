@@ -5,34 +5,8 @@
     <title>Register With Us</title>
     <style>
         textarea {
-            font-size: 15px;
-            width: 200px;
-            height: 200px;
-            color: blue;
-            background-color: palegreen;
-        }
-
-        label {
-            color: blue;
-            font-size: 20px;
-        }
-
-        input{
-            background-color: palegreen;
-        }
-
-        body {
-            padding: 25px;
-            /*align-content: right;*/
-
-        }
-
-        div {
-            margin-bottom: 10px;
-            margin-top: 10px;
-        }
-        select {
-            font-size: 20px;
+            width: 300px;
+            height: 300px;
         }
     </style>
 </head>
@@ -46,18 +20,21 @@
 <form method="POST" action="https://requestb.in/1farl4p1">
         <label for="email">E-Mail Address</label>
         <input id="email" name="email" type="text" placeholder="email">
-        <div></div>
+        <br>
+        <br>
         <label for="password">Password</label>
         <input id="password" name="password" type="text" placeholder="password">
-        <div></div>
+        <br>
+        <br>
+
+
+        <label for="Bio"> About You </label>
+        <br>
+        <textarea name="Bio" id="Bio"> Tell us about yourself! </textarea>
 
 
 
-        <textarea name="Bio"> Tell us about yourself! </textarea>
-
-
-        <div>
-            <h4> How did you hear about us?</h4>
+            <p> How did you hear about us?</p>
             <input type="checkbox" name="advert" id="billboard" value=="Billboard">
                 <label for="billboard">Billboard</label> <br>
             <input type="checkbox" name="advert" id="internet" value="Internet">
@@ -66,16 +43,20 @@
                 <label for="radio">Radio Ad</label> <br>
             <input type="checkbox" name="advert" id="other" value="Other">
                 <label for="other">Other</label> <br>
-        </div>
 
-        <div>
-            <select name="browsertype">
+
+            <br>
+            <br>
+            <label for="browsertype"> Please Select Your Broswer Type </label>
+            <br>
+            <br>
+            <select name="browsertype" id="browsertype">
                 <option value="IE"> Internet Explorer</option>
                 <option value="Safari"> Safari</option>
                 <option value="Chrome"> Google Chrome</option>
                 <option value="Other"> Other</option>
             </select>
-        </div>
+
 
         <input type="submit"><br>
 
