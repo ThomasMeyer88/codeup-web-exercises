@@ -1,12 +1,31 @@
+body {
+    background-image: url(../img/codeup-ribbon.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+}
 div {
     border: 1px solid black;
     height: 50px;
-    width: 150px;
+    width: 50px;
     color: white;
     padding-bottom: 22px;
     padding-left: 11px;
     padding-right: 11px;
-    margin-top: 10px;
+    margin-top: 50px;
+    float: left;
+    margin-right: 50px;
+}
+
+img {
+    position: relative;
+    bottom: 110px;
+    left: 40px;
+}
+
+
+div:nth-child(even) {
+    clear: left;
+
 }
 
 div.red{
@@ -14,25 +33,25 @@ div.red{
 }
 div.orange{
     background-color: orange;
-    margin-left: 30px;
+    /*margin-left: 30px;*/
 }
 
 div.yellow{
     background-color: yellow;
-    margin-left: 60px;
+    /*margin-left: 60px;*/
 }
 
 div.green{
     background-color: green;
-    margin-left: 90px;
+    /*margin-left: 90px;*/
 }
 
 div.blue{
     background-color: blue;
-    margin-left: 120px;
+    /*margin-left: 120px;*/
 }
 
 div.violet{
     background-color: violet;
-    margin-left: 150px;
+    /*margin-left: 150px;*/
 }
