@@ -1,21 +1,112 @@
+div.customheader{
+    border-bottom-right-radius: 90px;
+    border-bottom-left-radius: 90px;
+    border: 3px solid darkslategray;
+    background-color: darkslategray;
+    box-shadow: 0 3px darkcyan;
+}
 .row1 {
+
     float: left;
-    margin-left: 10px;
+    margin-left: 50px;
     margin-bottom: 10px;
     width: 500px;
     height: 400px;
+    margin-top: 20px;
+    border:2px solid lightcyan;
 
 }
 .row2 {
-    margin-left: 10px;
     margin-bottom: 10px;
     width: 500px;
     height: 400px;
-
+    margin-top: 20px;
+    border: 2px solid lightcyan;
 }
 
-/*table.style {
-    text-family: "Times New Roman";
+h2.centered {
+    text-align: center;
+    font-size: 40px;
+    width: 95%;
+    color: aquamarine;
+    font-family: baskerville default, serif;
+}
+
+hr {
+    background-color: aqua;
+    height: 10px;
+    opacity: 0.3;
+}
+
+h1.fancyheader {
+    color: aquamarine;
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 25px;
+    font-family: baskerville default, serif;
+}
+
+h2 {
+    margin-left: 20px;
+    /*text-decoration: underline; disabled for aesthetics*/
+    color: powderblue;
+}
+ul{
+    list-style-type: square;
+}
+body {
+    background-color: black;
+    opacity: 0.9;
+    background-image: url("../img/veridian_5.jpg");
+    background-size: 100%;
+    font-family: sans-serif;
+    background-attachment: fixed;
+    color: cyan;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+div.side {
+    margin-top: 5px;
+    margin-left: 3%;
+    float:left;
+    width: 30.333%;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+
+
+.style {
+    font-size: large;
     background-color: lightcyan;
     color: darkblue;
-}*/
+    padding: 5px;
+    border: 2px solid darkblue;
+    border-collapse: collapse;
+    width: 50%;
+    opacity: 0.8;
+    font-family: sans-serif;
+}
+
+tr, th, td{
+    border: 2px solid darkblue;
+    text-align: center;
+}
+
+a:link {
+    color: cornflowerblue;
+}
+
+a:hover {
+    color: aliceblue;
+}
+
+a:visited {
+    color: darkmagenta;
+}
+
+a:active {
+    color: yellow;
+}
