@@ -1,0 +1,252 @@
+<!doctype html5>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order Pizza Today</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+<!-- Main page content -->
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light customheader">
+
+    <!-- toggler collapses the bar on mobile devices-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Order Pizza</a>
+            </li>
+            <li class="nav-item lgreybg">
+                <a class="nav-link" href="#">Order Online</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Menu</a>
+            </li>
+        </ul>
+
+        <form method="post" action="https://requestb.in/1mily141" class="form-inline mx-2 my-0">
+                <label for="zipcode"></label>
+                <input id="zipcode" type="text" placeholder="Zip Code" name="zipcode">
+                <button class="btn btn-sm btn-outline-secondary mx-2 my-0" type="submit">Find Stores Near You!</button>
+        </form>
+
+        <ul class="navbar-nav ml-auto"> <!-- Right Aligned Content-->
+            <!--<img src="/open-iconic/svg/person.svg">-->
+            <li class="nav-item">
+                <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+</nav> <!--NavBar content -->
+
+<div class="container-fluid mt-5 p-5">
+
+
+
+    <div class="jumbotron jumbotron-fluid d-none d-md-block ml-0 mr-0">
+        <div class="container-fluid">
+            <h1 class="display-4">Welcome to Pizza World!</h1>
+        </div>
+    </div> <!-- Hello Pizza World -->
+
+    <h2>BUILD YOUR OWN PIZZA TODAY!</h2>
+
+    <ul class="nav nav-tabs mr-2"> <!-- Pizza Option Cards -->
+        <li class="nav-item">
+            <a class="nav-link active" href="#crusttype"><span class="badge badge-pill badge-secondary mx-left mr-1">1</span>
+                Size and Crust</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#cheesesauce"><span class="badge badge-pill badge-secondary mx-left mr-1">2</span>Cheese and Sauce</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#toppings"><span class="badge badge-pill badge-secondary mx-left mr-1">3</span>Toppings</a>
+        </li>
+    </ul>
+
+    <form method="post" action="https://requestb.in/18l3b9b1">
+
+    <div class="card cfblbrd" style="width: 100%;" id="crusttype">
+        <h6 class="cardstyle p-3">Choose Size and Crust</h6>
+        <div class="p-4">
+            <div class="lgreybrd">
+                <h6 class="lgreybg p-2">Hand tossed</h6>
+                <h6 class="p-2">Garlic-seasoned crust with rich, buttery taste</h6>
+            </div>
+            <ul class="list-group list-group-flush cfblbrd">
+                <li class="list-group-item cardstyle p-2">
+                    <input type="radio" name="crust" id="smallht" value="smallht" class="mr-2">
+                    <label for="smallht">Small(10")</label>
+                </li>
+                <li class="list-group-item cardstyle p-2">
+                    <input type="radio" name="crust" id="mediumht" value="mediumht" class="mr-2">
+                    <label for="mediumht">Medium(12")</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="pl-4 pr-4 pb-5">
+            <div class="lgreybrd">
+                <h6 class="lgreybg p-2">Crunchy thin crust</h6>
+                <h6 class="p-2">Thin enough for the optimum crispy to crunchy ratio</h6>
+            </div>
+            <ul class="list-group list-group-flush cfblbrd">
+                <li class="list-group-item cardstyle p-2">
+                    <input type="radio" name="crust" id="medcr" value="medcr" class="mr-2">
+                    <label for="medcr">Medium(12")</label>
+                </li>
+                <li class="list-group-item cardstyle p-2">
+                    <input type="radio" name="crust" id="lrgcr" value="lrgcr" class="mr-2">
+                    <label for="lrgcr">Large(14")</label>
+                </li>
+            </ul>
+        </div>
+
+            <div class="card text-right">
+                <div class="card-body lgreybg">
+                    <a href="#cheesesauce" class="btn cardstyle p-1">Next Step</a>
+                </div>
+            </div>
+
+    </div>
+
+    <div class="card cfblbrd mt-5" style="width: 100%;" id="cheesesauce">
+
+        <h6 class="cardstyle p-3">Choose Cheese and Sauce</h6>
+        <div class="p-4">
+            <div class="lgreybrd mb-4">
+                <h6 class="lgreybg p-3 mb-0">Cheese?</h6>
+                <div class="form-group mb-0">
+                    <div class="cardstyle p-3">
+                        <label for="Cheese">Cheese</label>
+
+                    <select class="form-control" id="Cheese" name="cheese">
+                        <option>Light</option>
+                        <option>Extra</option>
+                        <option>Normal</option>
+                        <option>Double</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+            <div class="lgreybrd">
+                <h6 class="lgreybg p-3 mb-0">Sauce?</h6>
+                <div class="form-group mb-0">
+                    <div class="cardstyle p-3">
+                        <label for="Sauce">Sauce</label>
+
+                        <select class="form-control" id="Sauce" name="sauce">
+                            <option>Tomato Sauce</option>
+                            <option>BBQ Sauce</option>
+                            <option>Marinara</option>
+                            <option>Alfredo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group mb-0">
+                    <div class="cardstyle p-3 mb-0">
+                        <label for="sauceamnt">How much?</label>
+                        <select class="form-control" id="sauceamnt" name="sauceamount">
+                            <option>Light</option>
+                            <option>Normal</option>
+                            <option>Extra</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="card-footer text-right lgreybg p-3">
+            <div class="btn-group" role="group">
+                <a href="#crusttype" class="btn cardstyle p-1">Previous Step</a>
+                <a href="#toppings" class="btn cardstyle p-1">Next Step</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card cfblbrd mt-5" style="width: 100%;" id="toppings">
+        <h6 class="cardstyle p-3">Choose Toppings</h6>
+        <div class="p-4">
+            <div class="mb-4">
+                <h6 class="lgreybg p-3 mb-0">Choose Meats</h6>
+                <div class="form-group mb-0">
+                    <ul class="p-0 m-0" style="list-style: none">
+                        <li class="cardstyle ml-0 mr-0 p-3">
+                            <input type="checkbox" id="beef" value="beef" name="toppings">
+                            <label for="beef">beef</label>
+                        </li>
+                        <li class="cardstyle ml-0 mr-0 p-3">
+                            <input type="checkbox" id="ham" value="ham" name="toppings">
+                            <label for="ham">ham</label>
+                        </li>
+                        <li class="cardstyle ml-0 mr-0 p-3">
+                            <input type="checkbox" id="philly" value="philly" name="toppings">
+                            <label for="philly">philly steak</label>
+                        </li>
+                        <li class="cardstyle ml-0 mr-0 p-3">
+                            <input type="checkbox" id="bacon" value="bacon" name="toppings">
+                            <label for="bacon">bacon</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <h6 class="lgreybg p-3 mb-0 mt-5">Choose non-meats</h6>
+                <div class="form-group mb-0">
+                    <ul class="p-0 m-0" style="list-style: none">
+                        <li class="cardstyle ml-0 mr-0 p-3">
+                            <input type="checkbox" id="peppers" value="peppers" name="toppings">
+                            <label for="peppers">green peppers</label>
+                        </li>
+                        <li class="cardstyle ml-0 mr-0 p-3">
+                            <input type="checkbox" id="mushrooms" value="mushrooms" name="toppings">
+                            <label for="mushrooms">mushrooms</label>
+                        </li>
+                        <li class="cardstyle ml-0 mr-0 p-3">
+                            <input type="checkbox" id="onions" value="onions" name="toppings">
+                            <label for="onions">onions</label>
+                        </li>
+                        <li class="cardstyle ml-0 mr-0 p-3">
+                            <input type="checkbox" id="jalapeno" value="jalapeno" name="toppings">
+                            <label for="jalapeno">jalapeno peppers</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card text-right">
+            <div class="card-body lgreybg">
+                <button class="btn cardstyle p-1" type="submit" id="pizzainfo">Checkout</button>
+            </div>
+        </div>
+
+    </div>
+
+    </form>
+
+
+
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Your custom JS goes here -->
+</body>
+</html>

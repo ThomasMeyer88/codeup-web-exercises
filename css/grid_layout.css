@@ -1,0 +1,129 @@
+
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: content-box;
+    }
+
+    .row {
+        width: 100%;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+
+    .column {
+        box-sizing: border-box;
+        /*background-color: lightgray;*/
+        /*border: 1px solid black;*/
+    }
+    .column.onehalf {
+        width: 50%;
+        float: left;
+    }
+
+    .column.onethird {
+        width: 33.333%;
+        float: left;
+    }
+
+    .column.onefourth {
+        width: 25%;
+        float: left;
+    }
+
+    .column.oneeighth {
+        width: 12.5%;
+        float: left;
+
+    }
+
+
+    @media screen and (min-width:100px) and (max-width:425px){
+
+        body {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .container {
+            width: 100%;
+
+        }
+
+        .column.onehalf, .column.onefourth, .column.oneeighth, .column.onethird {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+    }
+    @media screen and (min-width:426px) and (max-width:768px){
+
+        .container {
+            max-width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .column {
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+
+
+        }
+        .column.onehalf {
+            max-width: 375px;
+
+        }
+        .column.onethird {
+            max-width: 250px;
+
+        }
+        .column.onefourth {
+            max-width: 187.5px;
+
+
+        }
+        .column.oneeighth {
+            max-width: 98.75px;
+
+        }
+    }
+
+    @media screen and (min-width:769px) {
+        .container {
+            max-width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .column {
+            max-width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+
+
+        }
+        .column.onehalf {
+            max-width: 750px;
+
+        }
+        .column.onethird {
+            max-width: 500px;
+
+        }
+        .column.onefourth {
+            max-width: 375px;
+
+
+        }
+        .column.oneeighth {
+            max-width: 187.5px;
+
+        }
+    }
+
