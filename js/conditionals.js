@@ -16,6 +16,7 @@
  * Can you refactor your code to use functions?
  */
 
+
 var confirmNumber = confirm("Would you like to enter a number???");
 
 if(confirmNumber === true){
@@ -75,20 +76,42 @@ function anaylzeColor(colorID){
         alert("I don't know that color!");
     }
 }
+
 var randomColor = colors[Math.floor(Math.random() * colors.length)];
-console.log(randomColor);
+//console.log(randomColor);
 /**
  * TODO:
  * Pass the `randomColor` variable to your function and console.log the results.
  * You should see a different message everytime you refresh the page
  */
 
-anaylzeColor(randomColor);
+//anaylzeColor(randomColor);
 
 /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
+
+// switch(randomColor){
+//     case "blue":
+//         alert("The sky is rather " + randomColor);
+//         break;
+//     case "red":
+//         alert("Strawberries are " + randomColor);
+//         break;
+//     case "cyan":
+//         alert(randomColor + " is very nice");
+//         break;
+//     case "violet":
+//         alert(randomColor + " also doubles as a name");
+//         break;
+//     case "purple":
+//         alert("Beware the " + randomColor + "-peaple eaters");
+//         break;
+//     default:
+//         alert("I don't know anything about " + randomColor);
+//         break;
+// }
 
 /**
  * TODO:
@@ -96,6 +119,10 @@ anaylzeColor(randomColor);
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+
+var colorChoice = prompt("Please choose a color: red blue cyan");
+
+anaylzeColor(colorChoice);
 
 /* ########################################################################## */
 
@@ -119,6 +146,39 @@ anaylzeColor(randomColor);
  * return value.
  */
 
+function getLucky(luckyNumber, totalCost){
+    var discount;
+    var discountCost;
+    switch(luckyNumber){
+        case '1':
+            discount = 0.1;
+            break;
+        case '2':
+            discount = 0.25;
+            break;
+        case '3':
+            discount = 0.35;
+            break;
+        case '4':
+            discount = 0.5;
+            break;
+        case '5':
+            discount = 1;
+            break;
+        default:
+            discount = 0;
+            break;
+    }
+    discountCost = (totalCost) - (totalCost * discount);
+    var savings = totalCost - discountCost;
+    alert("Wow, the final cost is now " + discountCost+ "! You saved " + savings + "!");
+}
+
+var userLuckyNumber = prompt("Enter a lucky number from 0-5");
+var userPrice = prompt("And how much do the goods cost?");
+
+getLucky(userLuckyNumber, userPrice);
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.
@@ -127,4 +187,14 @@ anaylzeColor(randomColor);
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var randomLuckyNumber = Math.floor(Math.random() * 6);
+
+alert("Let's try again with a random lucky number!");
+
+alert("Your random number is " +randomLuckyNumber);
+
+
+userPrice = prompt("How much is your bill?");
+
+
+getLucky(randomLuckyNumber.toString(), userPrice);
