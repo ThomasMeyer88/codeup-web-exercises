@@ -138,9 +138,7 @@
 
     //this function accepts three inputs and returns the book information
     function createBook(title, authorFirstName, authorLastName){
-        var newBook = [
-            {newTitle: title, authorInfo:{fName: authorFirstName, surName: authorLastName}}
-        ];
+        var newBook = {newTitle: title, authorInfo:{fName: authorFirstName, surName: authorLastName}};
         //console.log(newBook[0].newTitle + " by " + newBook[0].authorInfo.fName + " " + newBook[0].authorInfo.surName);
         return newBook;
     }
@@ -157,7 +155,7 @@
 
     //function prints book info to log in format of Title by First Last
     function showBookInfo(book){
-        console.log(book[0].newTitle + " by " + book[0].authorInfo.fName + " " + book[0].authorInfo.surName);
+        console.log(book.newTitle + " by " + book.authorInfo.fName + " " + book.authorInfo.surName);
     }
 
 
