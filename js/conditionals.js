@@ -17,25 +17,30 @@
  */
 
 
-var confirmNumber = confirm("Would you like to enter a number???");
+var userNumber = parseInt(prompt("Please enter a number!"));
 
-if(confirmNumber === true){
-    var userNumber = prompt("Please enter a number!")
-    if(userNumber % 2 === 0){
-        alert(userNumber + " is an even number!")
-    } else {
-        alert(userNumber + " is an odd number!")
-    }
-    var oneHundred = 100;
-    var plusOneHundred = parseFloat(userNumber) + oneHundred;
-    alert(userNumber + " + 100 = " + plusOneHundred + "!");
-    if(userNumber >= 0){
-        alert(userNumber + " is a positive number!")
-    } else {
-        alert(userNumber + " is a negative number!")
-    }
+if(userNumber == undefined){
+    userNumber = parseInt(prompt("An odd number please!"));
+} else if (userNumber %2 == 0 && userNumber >= 0) {
+   alert(userNumber + " is an even number");
+   alert(userNumber + " is a positive number");
+   var addEven = userNumber + 100;
+   alert(userNumber + " + 100 = " + addEven);
+} else if(userNumber %2 == 0 && userNumber < 0){
+   alert(userNumber + " is an even number");
+   alert(userNumber + " is a negative number");
+   var addENeg = userNumber + 100;
+   alert(userNumber + " + 100 = " + addENeg);
+} else if(userNumber %2 > 0 && userNumber > 0){
+    alert(userNumber + " is an odd number");
+    alert(userNumber + " is a positive number");
+    var addOdd = userNumber + 100;
+    alert(userNumber + " + 100 = "+ addOdd);
 } else {
-    alert("Dang.");
+    alert(userNumber + " is an odd number");
+    alert(userNumber + " is a negative number");
+    var addNOdd = userNumber + 100;
+    alert(userNumber + " + 100 = " + addNOdd);
 }
 
 /* ########################################################################## */
@@ -65,15 +70,15 @@ if(confirmNumber === true){
 //                  will contain a different color everytime the page loads)
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
-function anaylzeColor(colorID){
+function analyzeColor(colorID){
     if(colorID === "blue"){
-        alert(colorID + " is the color of the sky");
+        return (colorID + " is the color of the sky");
     } else if(colorID === "red"){
-        alert("Strawberries are " + colorID);
+        return ("Strawberries are " + colorID);
     } else if(colorID === "cyan"){
-        alert(colorID + " rhymes with Siam");
+        return (colorID + " rhymes with Siam");
     } else{
-        alert("I don't know that color!");
+        return ("I don't know that color!");
     }
 }
 
@@ -122,7 +127,7 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
 
 var colorChoice = prompt("Please choose a color: red blue cyan");
 
-anaylzeColor(colorChoice);
+alert(analyzeColor(colorChoice));
 
 /* ########################################################################## */
 
