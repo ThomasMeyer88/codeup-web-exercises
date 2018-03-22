@@ -6,7 +6,7 @@
         radius: 3,
 
         getArea: function getArea(radius){
-            // TODO: complete this method
+
             // hint: area = pi * radius^2
             var pi = 3.14;
             return pi * (radius * radius);
@@ -15,7 +15,7 @@
         },
 
         logInfo: function doRounding(rounding) {
-            // TODO: complete this method.
+
 
             // If doRounding is true, round the result to the nearest integer.
             // Otherwise, output the complete value
@@ -36,7 +36,7 @@
     circle.logInfo(true);
 
     console.log("=======================================================");
-    // TODO: Change the radius of the circle to 5.
+
 
     circle.radius = 5;
 
