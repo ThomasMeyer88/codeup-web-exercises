@@ -91,13 +91,12 @@ body {
     height: 50px;
 }
 
-.bomb {
-    background-color: transparent;
-    margin-top: 15px;
-    margin-left: 15px;
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    z-index: 1;
-    float: left;
+#winLoss {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+    background-color: darkgray;
+    border: 5px solid silver;
+    border-radius: 20%;
+    height: 95px;
 }
