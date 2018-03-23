@@ -28,6 +28,9 @@ function startGame(){
     setBomb();
 }
 
+
+//showMines is called when a grid with a value of mine is clicked and then calls setMinesRed which sets
+//the background round and activates the appropriate bomb image
 function showMines(){
     for(var gridRow = 1; gridRow < 6; gridRow++){
         for(var gridCol = 1; gridCol < 6; gridCol++){
@@ -35,7 +38,7 @@ function showMines(){
         }
     }
 
-    var showDelay = 2000;
+    var showDelay = 5000;
     var resetGame = setTimeout(function(){
         startGame();
     }, showDelay);
@@ -44,7 +47,13 @@ function showMines(){
 function setMinesRed(row, column){
     if(document.getElementById(row + '-' + column).value == "mine"){
         document.getElementById(row + '-' + column).style.backgroundColor = "red";
-    }
+        document.getElementById(row + '-' + column).style.backgroundImage = "url('img/bomb.svg')";
+        var bombID = "0-" + row + '-' + column;
+
+        console.log(bombID);
+        }
+
+
 }
 
 
@@ -73,8 +82,8 @@ function setBomb(){
 
 function callGrid(row, column){
 
-
     document.getElementById(row + '-' + column).style.backgroundColor = "blue";
+    document.getElementById(row + '-' + column).style.backgroundImage= "none";
     document.getElementById(row + '-' + column).value = 0;
     document.getElementById(row + '-' + column).innerText = '';
 }

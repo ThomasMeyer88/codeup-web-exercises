@@ -40,11 +40,15 @@
     box-shadow: inset 2px 2px 2px 3px black;
     padding-top: 20px;
     text-align: center;
+    background-image: url("../img/bomb.svg");
+
 }
 
 body {
     color: white;
     font-size: 40px;
+    z-index: 0;
+    position: relative;
 }
 
 #totalMines {
@@ -87,3 +91,13 @@ body {
     height: 50px;
 }
 
+.bomb {
+    background-color: transparent;
+    margin-top: 15px;
+    margin-left: 15px;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    z-index: 1;
+    float: left;
+}
