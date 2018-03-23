@@ -4,22 +4,53 @@ var mineChance;
 var adjMine;
 var totalMines;
 var safeGrid;
+var lostGame;
+var newGameLoop;
+var timer;
+var winStreak = 0;
+var highClear = 0;
+
+
 
 
 
 function startGame(){
+    clearInterval(newGameLoop);
     adjMine = 0;
     totalMines = 0;
     safeGrid = 25;
+    lostGame = false;
     console.log("game start");
     document.getElementById('totalMines').innerText = "There are " + totalMines + " mines in this round";
     document.getElementById('safeGrid').innerText = "There are " + safeGrid + " safe clicks left";
+    document.getElementById('winStreak').innerText = "Currently on a " + winStreak + " game win streak";
+    document.getElementById('mostCleared').innerText = "Most mines cleared is " + highClear + "!";
     setBomb();
+}
+
+function showMines(){
+    for(var gridRow = 1; gridRow < 6; gridRow++){
+        for(var gridCol = 1; gridCol < 6; gridCol++){
+            setMinesRed(gridRow,gridCol);
+        }
+    }
+
+    var showDelay = 2000;
+    var resetGame = setTimeout(function(){
+        startGame();
+    }, showDelay);
+}
+
+function setMinesRed(row, column){
+    if(document.getElementById(row + '-' + column).value == "mine"){
+        document.getElementById(row + '-' + column).style.backgroundColor = "red";
+    }
 }
 
 
 
 function setBomb(){
+
     for(var gridRow = 1; gridRow < 6; gridRow++){
         for(var gridCol = 1; gridCol < 6; gridCol++){
             callGrid(gridRow,gridCol);
@@ -418,17 +449,24 @@ function mineCheck(clickedID){
    console.log(clickedID);
    if(document.getElementById(clickedID).value=="mine"){
        document.getElementById(clickedID).style.backgroundColor = "red";
-       alert("You clicked a mine!");
-       var timer = 5000;
-       var newGameLoop = setInterval(function startGame(){
-
-               clearInterval(timer);
-               startGame();
-
+       lostGame = true;
+       timer = 1000;
+       winStreak = 0;
+       newGameLoop = setTimeout(function(){
+           alert("Game over!");
+            showMines();
        }, timer);
-   } else if(safeGrid == 1) {
-        alert("You won the game!");
 
+   } else if(safeGrid == 1) {
+       winStreak++;
+        alert("You won the game!");
+        showMines();
+        if(totalMines > highClear){
+            highClear = totalMines;
+        }
+
+   } else if(lostGame == true){
+       alert("Please start a new game");
    } else {
             document.getElementById(clickedID).innerText = document.getElementById(clickedID).value
             safeGrid--;

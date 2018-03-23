@@ -7,9 +7,7 @@
 </head>
 <body>
     <div>
-        <button id="gameStart">Click to Start</button>
-        <div id = "totalMines"></div>
-        <div id = "safeGrid"></div>
+        <div class = "gameHeader"><button id="gameStart">Click to Start</button></div>
         <div class="gameBody">
             <div id="row1">
                 <div class = "mineGrid" id = "1-1" onClick="mineCheck(this.id)"></div>
@@ -46,6 +44,13 @@
                 <div class = "mineGrid" id = "5-4" onClick="mineCheck(this.id)"></div>
                 <div class = "mineGrid" id = "5-5" onClick="mineCheck(this.id)"></div>
             </div>
+        </div>
+        <div class="sideBar">
+            <div id = "totalMines"></div>
+            <div id = "safeGrid"></div>
+            <div id = "winStreak"></div>
+            <div id = "mostCleared"></div>
+
         </div>
     </div>
 
