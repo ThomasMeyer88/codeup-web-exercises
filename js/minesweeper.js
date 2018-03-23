@@ -1,7 +1,6 @@
 "use strict";
 
 var mineChance;
-var mineCount;
 var adjMine;
 var totalMines;
 var safeGrid;
