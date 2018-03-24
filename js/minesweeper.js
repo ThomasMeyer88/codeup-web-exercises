@@ -7,20 +7,28 @@ var safeGrid;
 var lostGame;
 var newGameLoop;
 var timer;
+var firstClick;
+
+//the following are declared now to avoid resetting them with every game and NaN/null values in displays
 var winStreak = 0;
 var highClear = 0;
 var winCounter = 0;
 var lossCounter = 0;
 var gameOn = false;
-var firstClick;
+var flagModeOn = false;
+var flagCount = 0;
+var clickCounter = 0;
 
 
 
+
+//resets variables in order to actaully start the game
 function clearGame(){
     clearInterval(newGameLoop);
     gameOn = false;
     adjMine = 0;
     totalMines = 0;
+    flagCount = 0;
     safeGrid = 25;
     lostGame = false;
     for(var gridRow = 1; gridRow < 6; gridRow++){
@@ -30,6 +38,8 @@ function clearGame(){
     }
 }
 
+//if gameOn = false startGame will be called by clicking a tile and calls the setBomb function to
+//initialize everthing else
 function startGame(){
     gameOn = true;
     adjMine = 0;
@@ -47,7 +57,7 @@ function startGame(){
 
 
 //showMines is called when a grid with a value of mine is clicked and then calls setMinesRed which sets
-//the background round and activates the appropriate bomb image
+//the background red and activates the appropriate bomb image
 function showMines(){
     for(var gridRow = 1; gridRow < 6; gridRow++){
         for(var gridCol = 1; gridCol < 6; gridCol++){
@@ -61,6 +71,8 @@ function showMines(){
     }, showDelay);
 }
 
+//this function is called at the end of the game on either a loss or win just to show the user
+//location of the mines
 function setMinesRed(row, column){
     if(document.getElementById(row + '-' + column).value == "mine"){
         document.getElementById(row + '-' + column).style.backgroundColor = "red";
@@ -74,7 +86,12 @@ function setMinesRed(row, column){
 }
 
 
-
+//this function runs through 3 different for loops
+//the first loop is for callGrid to clear the field
+//second loop is to establish where the mines are located
+//third loop is to establish values of non mine tiles based on number of adjacent mines
+//each loop has a nested for loop
+//the logic is that the loop checks all rows and the nested loop checks each column of the row
 function setBomb(){
 
     for(var gridRow = 1; gridRow < 6; gridRow++){
@@ -97,6 +114,7 @@ function setBomb(){
 }
 
 
+//this function is called in order to reset the background color and remove images at the start of a new game
 function callGrid(row, column){
 
     document.getElementById(row + '-' + column).style.backgroundColor = "blue";
@@ -105,6 +123,9 @@ function callGrid(row, column){
     document.getElementById(row + '-' + column).innerText = '';
 }
 
+
+//setMineGrid "rolls the dice" to assign the value of mine to tiles
+//it can not assign the first clicked tile a value of mine
 function setMineGrid(row, column){
     mineChance = Math.floor(Math.random() * 4) + 1;
     console.log(document.getElementById(row + '-' + column));
@@ -126,6 +147,9 @@ function setMineGrid(row, column){
 
 }
 
+
+//cascadeAdjacent occurs when a tile with a value of zero is clicked
+//it then loops through adjacent tiles and reveals those without mines
 function cascadeAdjacent(clickedID) {
     console.log(clickedID[0]);
     var row = clickedID[0];
@@ -142,9 +166,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -154,9 +179,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine"){
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -166,9 +192,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -178,9 +205,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -190,9 +218,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -205,9 +234,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -217,9 +247,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -229,9 +260,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -241,9 +273,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -253,9 +286,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -267,9 +301,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -279,9 +314,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -291,9 +327,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -303,9 +340,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -315,9 +353,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -330,9 +369,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -342,9 +382,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -354,9 +395,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -366,9 +408,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -378,9 +421,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -393,9 +437,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 4; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -405,9 +450,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 4; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -417,9 +463,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 4; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -429,9 +476,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 4; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -441,9 +489,10 @@ function cascadeAdjacent(clickedID) {
                 for (checkAdjRow = 4; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 6; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
-                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value == 0) {
-                            safeGrid--;
+                        if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
+                            ;
+
                         }
                     }
                 }
@@ -454,6 +503,8 @@ function cascadeAdjacent(clickedID) {
     }
 }
 
+
+//findMine sets values of all tiles that are not mines based on # of adjacent mines
 function findMine(row, column) {
     adjMine = 0;
     var checkRow;
@@ -807,47 +858,84 @@ function findMine(row, column) {
 }
 
 
-
+//mineCheck occurs when one of the tiles is clicked proceeds to for if the tile is a mine, is not a mine, if
+//win condition is met etc -- neeed to include a selector mode to flag tiles in here
 function mineCheck(clickedID){
    console.log(clickedID);
-   if(document.getElementById(clickedID).value=="mine"){
-       document.getElementById(clickedID).style.backgroundColor = "red";
-       lostGame = true;
-       timer = 1000;
-       winStreak = 0;
-       lossCounter++;
-       newGameLoop = setTimeout(function(){
-           alert("Game over!");
-            showMines();
-       }, timer);
+   clickCounter++;
+   if(flagModeOn == false) {
+       if (document.getElementById(clickedID).value == "mine") {
+           document.getElementById(clickedID).style.backgroundColor = "red";
+           lostGame = true;
+           timer = 1000;
+           winStreak = 0;
+           lossCounter++;
+           newGameLoop = setTimeout(function () {
+               alert("Game over!");
+               showMines();
+           }, timer);
 
-   } else if(safeGrid == 1) {
-       winStreak++;
-        alert("You won the game!");
-        showMines();
-        winCounter++;
-        if(totalMines > highClear){
-            highClear = totalMines;
+       } else if (safeGrid == 1) {
+           winStreak++;
+           alert("You won the game!");
+           showMines();
+           winCounter++;
+           if (totalMines > highClear) {
+               highClear = totalMines;
+           }
+
+       } else if (lostGame == true) {
+           alert("Please start a new game");
+       } else if (gameOn == false) {
+           firstClick = clickedID;
+           //document.getElementById(clickedID).innerText = document.getElementById(clickedID).value;
+           console.log(firstClick);
+           startGame();
+       } else if (document.getElementById(clickedID).value == 0) {
+           console.log(clickedID);
+           cascadeAdjacent(clickedID);
+           safeGrid--;
+           document.getElementById('safeGrid').innerText = "There are " + safeGrid + " safe clicks left";
+       }
+       else {
+           document.getElementById(clickedID).innerText = document.getElementById(clickedID).value;
+           document.getElementById('safeGrid').innerText = "There are " + safeGrid + " safe clicks left";
+           safeGrid--;
+       }
+   } else if(flagModeOn = true){
+        if(clickCounter % 2 == 0) {
+            document.getElementById(clickedID).style.backgroundImage = "url('img/bomb.svg')";
+            if(document.getElementById(clickedID).value == "mine"){
+                flagCount++;
+                console.log("Flag Count is " + flagCount);
+                if(flagCount == totalMines){
+                    alert("You flagged all the mines! You win!")
+                    showMines();
+                }
+            }
+        } else {
+            if(document.getElementById(clickedID).value == "mine"){
+                flagCount--;
+            }
+            document.getElementById(clickedID).style.backgroundImage = "none";
+
         }
-
-   } else if(lostGame == true){
-       alert("Please start a new game");
-   } else if(gameOn == false){
-        firstClick = clickedID;
-        //document.getElementById(clickedID).innerText = document.getElementById(clickedID).value;
-        console.log(firstClick);
-        startGame();
-   } else if(document.getElementById(clickedID).value==0){
-       console.log(clickedID);
-       cascadeAdjacent(clickedID);
-   }
-   else {
-            document.getElementById(clickedID).innerText = document.getElementById(clickedID).value;
-            safeGrid--;
-            document.getElementById('safeGrid').innerText = "There are " + safeGrid + " safe clicks left";
    }
 }
 
 
+//variable and event to reset game
 var clickToStart = document.getElementById('gameStart');
 clickToStart.addEventListener('click', clearGame);
+var flagMode = document.getElementById('flagIt');
+flagMode.addEventListener('click', runFlagMode);
+
+function runFlagMode(){
+    if (flagModeOn == true){
+        flagModeOn = false;
+        console.log("Flags are off");
+    } else {
+        flagModeOn = true;
+        console.log("Flags are on");
+    }
+}
