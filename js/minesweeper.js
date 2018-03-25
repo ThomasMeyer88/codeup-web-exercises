@@ -3,11 +3,11 @@
 var mineChance;
 var adjMine;
 var totalMines;
-var safeGrid;
 var lostGame;
 var newGameLoop;
 var timer;
 var firstClick;
+var mineCount = 5;
 
 //the following are declared now to avoid resetting them with every game and NaN/null values in displays
 var winStreak = 0;
@@ -16,8 +16,12 @@ var winCounter = 0;
 var lossCounter = 0;
 var gameOn = false;
 var flagModeOn = false;
-var flagCount = 0;
-var clickCounter = 0;
+var flagCount = 0; //tracks correctly placed flags
+var flagsPlaced = 0; //tracks all flags placed used to prevent false win condition
+
+//hiding win and lose display
+document.getElementById("Winner").style.display = "none";
+document.getElementById("Loser").style.display = "none";
 
 
 
@@ -29,8 +33,11 @@ function clearGame(){
     adjMine = 0;
     totalMines = 0;
     flagCount = 0;
-    safeGrid = 25;
+    flagsPlaced = 0;
     lostGame = false;
+    //rehiding winner and loser class at the start of a new game
+    document.getElementById("Winner").style.display = "none";
+    document.getElementById("Loser").style.display = "none";
     for(var gridRow = 1; gridRow < 6; gridRow++){
         for(var gridCol = 1; gridCol < 6; gridCol++){
             callGrid(gridRow,gridCol);
@@ -44,14 +51,14 @@ function startGame(){
     gameOn = true;
     adjMine = 0;
     totalMines = 0;
-    safeGrid = 25;
     lostGame = false;
     console.log("game start");
     document.getElementById('winLoss').innerText = "Session: Wins - " +winCounter + " Losses - " + lossCounter;
     document.getElementById('totalMines').innerText = "There are " + totalMines + " mines in this round";
-    document.getElementById('safeGrid').innerText = "There are " + safeGrid + " safe clicks left";
     document.getElementById('winStreak').innerText = "Currently on a " + winStreak + " game win streak";
     document.getElementById('mostCleared').innerText = "Most mines cleared is " + highClear + "!";
+    document.getElementById('flagToggle').innerText = "Flags are off";
+
     setBomb();
 }
 
@@ -104,13 +111,12 @@ function setBomb(){
             setMineGrid(gridRow,gridCol);
         }
     }
-    for(gridRow = 1; gridRow < 6; gridRow++){
-        for(gridCol = 1; gridCol < 6; gridCol++){
-            findMine(gridRow,gridCol);
+        for (gridRow = 1; gridRow < 6; gridRow++) {
+            for (gridCol = 1; gridCol < 6; gridCol++) {
+                findMine(gridRow, gridCol);
+            }
         }
-    }
-    safeGrid -= totalMines;
-    document.getElementById('safeGrid').innerText = "There are " + safeGrid + " safe clicks left";
+
 }
 
 
@@ -127,7 +133,7 @@ function callGrid(row, column){
 //setMineGrid "rolls the dice" to assign the value of mine to tiles
 //it can not assign the first clicked tile a value of mine
 function setMineGrid(row, column){
-    mineChance = Math.floor(Math.random() * 4) + 1;
+    mineChance = Math.floor(Math.random() * mineCount);
     console.log(document.getElementById(row + '-' + column));
     var checkFirstClick = row + "-" + column;
     console.log("This is checkFirstClick " + checkFirstClick);
@@ -167,8 +173,7 @@ function cascadeAdjacent(clickedID) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
                         console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
-                            document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
-                            ;
+                            document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;;
 
                         }
                     }
@@ -862,7 +867,6 @@ function findMine(row, column) {
 //win condition is met etc -- neeed to include a selector mode to flag tiles in here
 function mineCheck(clickedID){
    console.log(clickedID);
-   clickCounter++;
    if(flagModeOn == false) {
        if (document.getElementById(clickedID).value == "mine") {
            document.getElementById(clickedID).style.backgroundColor = "red";
@@ -871,18 +875,9 @@ function mineCheck(clickedID){
            winStreak = 0;
            lossCounter++;
            newGameLoop = setTimeout(function () {
-               alert("Game over!");
+               document.getElementById("Loser").style.display = "block";
                showMines();
            }, timer);
-
-       } else if (safeGrid == 1) {
-           winStreak++;
-           alert("You won the game!");
-           showMines();
-           winCounter++;
-           if (totalMines > highClear) {
-               highClear = totalMines;
-           }
 
        } else if (lostGame == true) {
            alert("Please start a new game");
@@ -894,31 +889,35 @@ function mineCheck(clickedID){
        } else if (document.getElementById(clickedID).value == 0) {
            console.log(clickedID);
            cascadeAdjacent(clickedID);
-           safeGrid--;
-           document.getElementById('safeGrid').innerText = "There are " + safeGrid + " safe clicks left";
        }
        else {
            document.getElementById(clickedID).innerText = document.getElementById(clickedID).value;
-           document.getElementById('safeGrid').innerText = "There are " + safeGrid + " safe clicks left";
-           safeGrid--;
        }
-   } else if(flagModeOn = true){
-        if(clickCounter % 2 == 0) {
+   } else if(flagModeOn == true){
+        if(document.getElementById(clickedID).style.backgroundColor == "blue"){
+            document.getElementById(clickedID).style.backgroundColor = "purple";
             document.getElementById(clickedID).style.backgroundImage = "url('img/bomb.svg')";
             if(document.getElementById(clickedID).value == "mine"){
                 flagCount++;
-                console.log("Flag Count is " + flagCount);
-                if(flagCount == totalMines){
-                    alert("You flagged all the mines! You win!")
+                flagsPlaced++;
+                if(flagCount == totalMines && flagsPlaced <= totalMines){
+                    winCounter++;
+                    winStreak++;
+                    document.getElementById("Winner").style.display = "block";
                     showMines();
                 }
+            } else {
+                flagsPlaced++;
             }
         } else {
+            document.getElementById(clickedID).style.backgroundColor = "blue";
+            document.getElementById(clickedID).style.backgroundImage = "none";
             if(document.getElementById(clickedID).value == "mine"){
                 flagCount--;
+                flagsPlaced--;
+            } else {
+                flagsPlaced--;
             }
-            document.getElementById(clickedID).style.backgroundImage = "none";
-
         }
    }
 }
@@ -929,13 +928,49 @@ var clickToStart = document.getElementById('gameStart');
 clickToStart.addEventListener('click', clearGame);
 var flagMode = document.getElementById('flagIt');
 flagMode.addEventListener('click', runFlagMode);
+var easyMode = document.getElementById('easyMode');
+easyMode.addEventListener('click',gameModeEasy);
+var hardMode = document.getElementById('hardMode');
+hardMode.addEventListener('click', gameModeHard);
+var openHelp = document.getElementById('helpButton');
+helpButton.addEventListener('click', openHelpMenu);
+var closeHelp = document.getElementById('closeHelp');
+closeHelp.addEventListener('click', closeHelpMenu);
+
+function openHelpMenu(){
+    document.getElementById('helpMenu').style.display = "block";
+}
+function closeHelpMenu(){
+    document.getElementById('helpMenu').style.display = "none";
+}
+
+function gameModeEasy(){
+
+    mineCount = 5;
+    document.getElementById('easyMode').style.backgroundColor = "purple";
+    document.getElementById('hardMode').style.backgroundColor = "lightgray";
+    clearGame();
+
+}
+function gameModeHard(){
+
+    mineCount = 3;
+    document.getElementById('easyMode').style.backgroundColor = "lightgray";
+    document.getElementById('hardMode').style.backgroundColor = "purple";
+    clearGame();
+
+}
 
 function runFlagMode(){
     if (flagModeOn == true){
         flagModeOn = false;
+        document.getElementById('flagToggle').innerText = "Flags are off";
+        document.getElementById('flagIt').style.backgroundColor = "lightgray";
         console.log("Flags are off");
     } else {
         flagModeOn = true;
         console.log("Flags are on");
+        document.getElementById('flagToggle').innerText = "Flags are on";
+        document.getElementById('flagIt').style.backgroundColor = "purple";
     }
 }

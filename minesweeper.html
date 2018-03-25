@@ -7,10 +7,12 @@
 </head>
 <body>
     <div>
-        <button id="flagIt">Flag Mines</button>
         <div class = "gameHeader">
             <button id="gameStart">Reset Game</button>
-
+            <button id="flagIt">Flag Mines</button>
+            <button id="helpButton">Help</button>
+            <button id="easyMode">Easy</button>
+            <button id="hardMode">Hard</button>
         </div>
         <div class="gameBody">
             <div id="row1">
@@ -84,12 +86,30 @@
         </div>
         <div class="sideBar">
             <div id = "totalMines"></div>
-            <div id = "safeGrid"></div>
+            <div id = "flagToggle"></div>
             <div id = "winStreak"></div>
             <div id = "mostCleared"></div>
             <div id = "winLoss"></div>
 
         </div>
+    </div>
+    <div>
+        <h1 id="Winner">You cleared all the mines and won the game!</h1>
+    </div>
+    <div>
+        <h1 id="Loser">You detonated a mine! You lose</h1>
+    </div>
+    <div id="helpMenu">
+        <button id="closeHelp">Close</button>
+        <br>
+        <strong>Minesweeper Help Menu</strong>
+        <ul>
+            <li>Toggle easy/hard to game change difficulty</li>
+            <li>Difficulty is by default easy</li>
+            <li>Changing difficulty resets the game</li>
+            <li>Toggle flag mines to place flags on tiles</li>
+            <li>Successfully flag all mines to win the game</li>
+        </ul>
     </div>
 
 </body>
