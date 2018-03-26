@@ -34,15 +34,17 @@
 }
 
 .mineGrid {
-    width: 76px;
-    height: 60px;
+    width: 53px;
+    height: 36.5px;
     border: 2px solid darkgray;
     background-color: lightgrey;
     float: left;
     box-shadow: inset 2px 2px 2px 3px black;
     padding-top: 20px;
     text-align: center;
-    background-image: url("../img/bomb.svg");
+    /*background-image: url("../img/bomb.svg");*/
+    font-size: 20px;
+
 
 }
 
@@ -108,7 +110,6 @@ body {
     margin-left: 75px;
     font-size: 50px;
     color: darkviolet;
-    opacity: 0.9;
     z-index: 3;
     position: absolute;
     display: none;
@@ -117,6 +118,7 @@ body {
     border-radius: 40%;
     padding: 20px;
     text-align: center;
+    opacity: 0.5;
 }
 
 #Loser {
@@ -124,7 +126,6 @@ body {
     margin-left:75px;
     font-size: 50px;
     color: red;
-    opacity: 0.9;
     z-index: 3;
     position: absolute;
     display: none;
@@ -133,6 +134,7 @@ body {
     border-radius: 40%;
     padding: 20px;
     text-align: center;
+    opacity: 0.5;
 
 }
 
