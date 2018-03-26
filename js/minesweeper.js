@@ -84,11 +84,12 @@ function showMines(){
 
 //this function is called at the end of the game on either a loss or win just to show the user
 //location of the mines
-function setMinesRed(row, column){
-    if(document.getElementById(row + '-' + column).value == "mine"){
+function setMinesRed(row, column) {
+    if (document.getElementById(row + '-' + column).value == "mine") {
         document.getElementById(row + '-' + column).style.backgroundColor = "red";
         document.getElementById(row + '-' + column).style.backgroundImage = "url('img/bomb.svg')";
-        }
+    }
+}
 
 
 //this function runs through 3 different for loops
@@ -140,7 +141,7 @@ function setMineGrid(row, column){
             case 2:
                 //document.getElementById(row + '-' + column).style.backgroundColor = "red";
                 document.getElementById(row + '-' + column).value = "mine";
-                //console.log(document.getElementById(row + '-' + column).value);
+                console.log(document.getElementById(row + '-' + column).value);
                 totalMines++;
 
                 document.getElementById('totalMines').innerText = "There are " + totalMines + " mines in this round";
@@ -153,33 +154,31 @@ function setMineGrid(row, column){
 //cascadeAdjacent occurs when a tile with a value of zero is clicked
 //it then loops through adjacent tiles and reveals those without mines
 function cascadeAdjacent(clickedID) {
-    //console.log(clickedID[0]);
+    console.log(clickedID[0]);
     var row = clickedID[0];
     var column = clickedID [2];
-    //console.log(row);
-    //console.log(column);
+    console.log("This is " + row);
+    console.log("This is " + column);
     var checkAdjRow;
     var checkAdjCol;
     if (document.getElementById(row + "-" + column).value != "mine") {
         if (row == 1) {
             //checks row 1
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
-                        }
                     }
                 }
-
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -187,10 +186,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -198,10 +197,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -209,10 +208,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 7; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -220,10 +219,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 5; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -231,10 +230,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 6; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -245,10 +244,10 @@ function cascadeAdjacent(clickedID) {
         } else if (row == 2) {
             //checks row 1
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -256,10 +255,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -267,10 +266,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -278,10 +277,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -289,20 +288,20 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 4; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 7; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
                     }
                 }
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 5; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -310,10 +309,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 1; checkAdjRow < 3; checkAdjRow++) {
                     for (checkAdjCol = 6; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -324,10 +323,10 @@ function cascadeAdjacent(clickedID) {
         } else if (row == 3) {
             //checks row 1
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -335,10 +334,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -346,10 +345,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -357,10 +356,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -368,10 +367,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 7; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -379,10 +378,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 5; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -390,10 +389,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 2; checkAdjRow < 5; checkAdjRow++) {
                     for (checkAdjCol = 6; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -404,10 +403,10 @@ function cascadeAdjacent(clickedID) {
         } else if (row == 4) {
             //checks row 1
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -415,10 +414,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -426,10 +425,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -437,10 +436,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -448,10 +447,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 7; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -459,10 +458,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 5; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -470,10 +469,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 6; checkAdjRow++) {
                     for (checkAdjCol = 6; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -483,10 +482,10 @@ function cascadeAdjacent(clickedID) {
         } else if (row == 5) {
             //checks row 1
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 4; checkAdjRow < 7; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -494,10 +493,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 4; checkAdjRow < 7; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -505,10 +504,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 4; checkAdjRow < 7; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -516,10 +515,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 4; checkAdjRow < 7; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -527,10 +526,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 4; checkAdjRow < 7; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 7; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -538,20 +537,20 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 7; checkAdjRow++) {
                     for (checkAdjCol = 5; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
                     }
                 }
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 3; checkAdjRow < 7; checkAdjRow++) {
                     for (checkAdjCol = 6; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -561,10 +560,10 @@ function cascadeAdjacent(clickedID) {
         } else if (row == 6) {
             //checks row 1
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 5; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -572,10 +571,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 5; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -583,10 +582,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 5; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -594,10 +593,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 5; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -605,10 +604,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 5; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 7; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -616,33 +615,33 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 5; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 5; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
                     }
                 }
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 5; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 6; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
                     }
                 }
             }
-        } else if (row == 5) {
+        } else if (row == 7) {
             //checks row 1
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 6; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 3; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -650,10 +649,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 6; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 1; checkAdjCol < 4; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -661,10 +660,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 6; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 2; checkAdjCol < 5; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -672,10 +671,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 6; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 3; checkAdjCol < 6; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -683,10 +682,10 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 6; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 4; checkAdjCol < 7; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -694,20 +693,20 @@ function cascadeAdjacent(clickedID) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 6; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 5; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
                     }
                 }
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkAdjRow = 6; checkAdjRow < 8; checkAdjRow++) {
                     for (checkAdjCol = 6; checkAdjCol < 8; checkAdjCol++) {
-                        //console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
+                        console.log("Checking" + checkAdjCol + " , " + checkAdjRow);
                         if (document.getElementById(checkAdjRow + '-' + checkAdjCol).value != "mine") {
                             document.getElementById(checkAdjRow + '-' + checkAdjCol).innerText = document.getElementById(checkAdjRow + '-' + checkAdjCol).value;
                         }
@@ -730,10 +729,10 @@ function findMine(row, column) {
         if (row == 1) {
             //checks row 1
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 3; checkRow++) {
                     for (checkCol = 1; checkCol < 3; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -742,10 +741,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 3; checkRow++) {
                     for (checkCol = 1; checkCol < 4; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -754,10 +753,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 3; checkRow++) {
                     for (checkCol = 2; checkCol < 5; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -766,10 +765,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 3; checkRow++) {
                     for (checkCol = 3; checkCol < 6; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -778,10 +777,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 3; checkRow++) {
                     for (checkCol = 4; checkCol < 7; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -790,10 +789,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 3; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -802,10 +801,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 3; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -815,15 +814,15 @@ function findMine(row, column) {
 
             }
             document.getElementById(row + '-' + column).value = adjMine;
-            //console.log(adjMine);
+            console.log(adjMine);
 
         } else if (row == 2) {
             //checks row 2
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 4; checkRow++) {
                     for (checkCol = 1; checkCol < 3; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -832,10 +831,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 4; checkRow++) {
                     for (checkCol = 1; checkCol < 4; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -844,10 +843,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 4; checkRow++) {
                     for (checkCol = 2; checkCol < 5; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -856,10 +855,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 4; checkRow++) {
                     for (checkCol = 3; checkCol < 6; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -868,10 +867,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 4; checkRow++) {
                     for (checkCol = 4; checkCol < 7; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -880,10 +879,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 4; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -892,10 +891,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 1; checkRow < 4; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -906,15 +905,15 @@ function findMine(row, column) {
             }
             //document.getElementById(row + '-' + column).innerText = adjMine;
             document.getElementById(row + '-' + column).value = adjMine;
-            //console.log(adjMine);
+            console.log(adjMine);
 
         } else if (row == 3) {
             //checks row 3
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 2; checkRow < 5; checkRow++) {
                     for (checkCol = 1; checkCol < 3; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -923,10 +922,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 2; checkRow < 5; checkRow++) {
                     for (checkCol = 1; checkCol < 4; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -935,10 +934,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 2; checkRow < 5; checkRow++) {
                     for (checkCol = 2; checkCol < 5; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -947,10 +946,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 2; checkRow < 5; checkRow++) {
                     for (checkCol = 3; checkCol < 6; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -959,10 +958,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 2; checkRow < 5; checkRow++) {
                     for (checkCol = 4; checkCol < 7; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -971,10 +970,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 2; checkRow < 5; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -983,10 +982,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 2; checkRow < 5; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -998,14 +997,14 @@ function findMine(row, column) {
             //document.getElementById(row + '-' + column).innerText = adjMine;
 
             document.getElementById(row + '-' + column).value = adjMine;
-            //console.log(adjMine);
+            console.log(adjMine);
 
         } else if (row == 4) {
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 3; checkRow < 6; checkRow++) {
                     for (checkCol = 1; checkCol < 3; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1014,10 +1013,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 3; checkRow < 6; checkRow++) {
                     for (checkCol = 1; checkCol < 4; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1026,10 +1025,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 3; checkRow < 6; checkRow++) {
                     for (checkCol = 2; checkCol < 5; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1038,10 +1037,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 3; checkRow < 6; checkRow++) {
                     for (checkCol = 3; checkCol < 6; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1050,10 +1049,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 3; checkRow < 6; checkRow++) {
                     for (checkCol = 4; checkCol < 7; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1062,10 +1061,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 3; checkRow < 6; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1074,10 +1073,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 3; checkRow < 6; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1088,14 +1087,14 @@ function findMine(row, column) {
             }
             //document.getElementById(row + '-' + column).innerText = adjMine;
             document.getElementById(row + '-' + column).value = adjMine;
-            //console.log(adjMine);
+            console.log(adjMine);
 
         } else if (row == 5) {
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 4; checkRow < 7; checkRow++) {
                     for (checkCol = 1; checkCol < 3; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1104,10 +1103,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 4; checkRow < 7; checkRow++) {
                     for (checkCol = 1; checkCol < 4; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1116,10 +1115,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 4; checkRow < 7; checkRow++) {
                     for (checkCol = 2; checkCol < 5; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1128,10 +1127,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 4; checkRow < 7; checkRow++) {
                     for (checkCol = 3; checkCol < 6; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1140,10 +1139,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 4; checkRow < 7; checkRow++) {
                     for (checkCol = 4; checkCol < 7; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1152,10 +1151,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 4; checkRow < 7; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1164,10 +1163,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 4; checkRow < 7; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1178,14 +1177,14 @@ function findMine(row, column) {
             }
             //document.getElementById(row + '-' + column).innerText = adjMine;
             document.getElementById(row + '-' + column).value = adjMine;
-            //console.log(adjMine);
+            console.log(adjMine);
 
         } else if (row == 6) {
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 5; checkRow < 8; checkRow++) {
                     for (checkCol = 1; checkCol < 3; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1194,10 +1193,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 5; checkRow < 8; checkRow++) {
                     for (checkCol = 1; checkCol < 4; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1206,10 +1205,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 5; checkRow < 8; checkRow++) {
                     for (checkCol = 2; checkCol < 5; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1218,10 +1217,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 5; checkRow < 8; checkRow++) {
                     for (checkCol = 3; checkCol < 6; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1230,10 +1229,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 5; checkRow < 8; checkRow++) {
                     for (checkCol = 4; checkCol < 7; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1242,10 +1241,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 5; checkRow < 8; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1254,10 +1253,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 5; checkRow < 8; checkRow++) {
-                    for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                    for (checkCol = 6; checkCol < 8; checkCol++) {
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1268,14 +1267,14 @@ function findMine(row, column) {
             }
             //document.getElementById(row + '-' + column).innerText = adjMine;
             document.getElementById(row + '-' + column).value = adjMine;
-            //console.log(adjMine);
+            console.log(adjMine);
 
         } else if (row == 7) {
             if (column == 1) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 6; checkRow < 8; checkRow++) {
                     for (checkCol = 1; checkCol < 3; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1284,10 +1283,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 2) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 6; checkRow < 8; checkRow++) {
                     for (checkCol = 1; checkCol < 4; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1296,10 +1295,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 3) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 6; checkRow < 8; checkRow++) {
                     for (checkCol = 2; checkCol < 5; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1308,10 +1307,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 4) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 6; checkRow < 8; checkRow++) {
                     for (checkCol = 3; checkCol < 6; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1320,10 +1319,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 5) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 6; checkRow < 8; checkRow++) {
                     for (checkCol = 4; checkCol < 7; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1332,10 +1331,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 6) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 6; checkRow < 8; checkRow++) {
                     for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1344,10 +1343,10 @@ function findMine(row, column) {
                 }
 
             } else if (column == 7) {
-                //console.log("Checking for " + row + " , " + column);
+                console.log("Checking for " + row + " , " + column);
                 for (checkRow = 6; checkRow < 8; checkRow++) {
-                    for (checkCol = 5; checkCol < 8; checkCol++) {
-                        //console.log("Checking" + checkRow + " , " + checkCol);
+                    for (checkCol = 6; checkCol < 8; checkCol++) {
+                        console.log("Checking" + checkRow + " , " + checkCol);
                         switch (document.getElementById(checkRow + '-' + checkCol).value) {
                             case "mine":
                                 adjMine++;
@@ -1358,13 +1357,13 @@ function findMine(row, column) {
             }
             //document.getElementById(row + '-' + column).innerText = adjMine;
             document.getElementById(row + '-' + column).value = adjMine;
-            //console.log(adjMine);
+            console.log(adjMine);
 
         }
 
 
     } else {
-        //console.log("It is a mine");
+        console.log("It is a mine");
     }
 
 
@@ -1375,7 +1374,7 @@ function findMine(row, column) {
 //mineCheck occurs when one of the tiles is clicked proceeds to for if the tile is a mine, is not a mine, if
 //win condition is met etc -- neeed to include a selector mode to flag tiles in here
 function mineCheck(clickedID){
-   //console.log(clickedID);
+   console.log(clickedID);
    if(flagModeOn == false) {
        if (document.getElementById(clickedID).value == "mine") {
            document.getElementById(clickedID).style.backgroundColor = "red";
@@ -1396,7 +1395,7 @@ function mineCheck(clickedID){
            console.log("This is the first click " + firstClick);
            startGame();
        } else if (document.getElementById(clickedID).value == 0) {
-           //console.log(clickedID);
+           console.log(clickedID);
            cascadeAdjacent(clickedID);
        }
        else {
