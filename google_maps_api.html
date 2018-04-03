@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #map-canvas {
+            width: 770px;
+            height: 481px;
+        }
+
+        #infoContent {
+            text-align: center;
+            width: 175px;
+            font-style: italic;
+            color: darkred;
+            font-size: 15px;
+        }
+
+        #infoContent ul{
+            list-style-type: square;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div id="map-canvas"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbqiJgdVCqlUYcuDzVkFlQWOV4wYYXbog"></script>
+
+<script type="text/javascript">
+    (function() {
+        "use strict";
+
+        var mapOptions = {
+            zoom: 15,
+
+            // This sets the center of the map at our location
+            center: {
+                lat: 29.467066,
+                lng: -98.624418
+            }
+        };
+
+
+
+
+
+        var mapCanvas = document.getElementById('map-canvas');
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+
+        var address = "3259 Wurzbach Rd, San Antonio, TX 78238";
+        var geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({"address" : address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+            } else {
+                alert("Geocoding was not successful - STATUS: " + status);
+            }
+        });
+        var gyroGrill = { lat: 29.467066, lng: -98.624418};
+        var marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: gyroGrill,
+            map: map
+        });
+
+        var infoWindowContent = '<div id = "infoContent">' +
+            '<h4>Jerusalem Grill</h4>'+
+            '<ul><li>Gigantic Gyros</li><li>Fantastic Falafel</li>'+
+            '<li>Sublime Shawarma</li></ul></div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: infoWindowContent
+        });
+
+        marker.addListener('click', function(){
+            infowindow.open(map, marker);
+        });
+
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+
+    })();
+</script>
+</body>
