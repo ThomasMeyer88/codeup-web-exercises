@@ -7,25 +7,19 @@
 <body>
     <div id="pageContent">
     <h1 id="header" class="textZone">This is all about JQUERY</h1>
-    <p class="textZone">Don't you love JQUERY? It makes everything run so smoothly.  Wish we could
+    <p>Don't you love JQUERY? It makes everything run so smoothly.  Wish we could
         use it all the time.</p>
         <ul>
             <h3 id="smallHeader" class = "textZone">Reasons to love JQUERY</h3>
-            <li id="dollar">Dollar dollar bills y'all</li>
-            <li>I'm sure we'll find more reasons later</li>
-            <li id="dollar">Dollar dollar bills y'all</li>
+            <li id="dollar" class = "codeup">Dollar dollar bills y'all</li>
+            <li class = "codeup">I'm sure we'll find more reasons later</li>
         </ul>
     </div>
 <script src="js/jquery-2.x-git.js"></script>
 <script>
     "use strict";
-    // $(document).ready(function() {
-    //     alert( 'The DOM has finished loading!' );
-    // });
-    var contents = $('#header').html();
-    alert(contents);
-    var dollarBills = $('#dollar').html();
-    alert(dollarBills);
+    $('.codeup').css('border', '1px solid red');
+
 </script>
 </body>
 </html>
