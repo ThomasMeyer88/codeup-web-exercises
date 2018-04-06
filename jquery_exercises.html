@@ -55,8 +55,23 @@
                 $('h1').css('background-color', 'cyan');
                 clickCount = 0;
         }
+    });
 
-        });
+
+    $('li').dblclick(function() {
+
+                $('li').css('font-size', '18px');
+
+    });
+
+    $('li').hover(
+        function() {
+            $(this).css('color', 'red');
+        },
+        function() {
+            $(this).css('color', 'black');
+        }
+    );
 
 </script>
 </body>
