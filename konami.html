@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+<h6 id="konamiCode">Enter the Konami Code</h6>
+
+<script src="js/jquery-2.x-git.js"></script>
+<script>
+    "use strict";
+    var konami = [38,38,40,40,37,39,37,39,66,65];
+    var userArray = [];
+    $(document).keyup(function(event){
+        console.log(event.keyCode);
+        userArray.push(event.keyCode);
+        if(userArray.length == konami.length){
+            for(var i = 0; i < userArray.length; i++){
+                if(userArray[i] !== konami[i]){
+                    console.log(konami);
+                    console.log(userArray);
+                    alert("Wrong Code! Resetting!");
+                    userArray = [];
+                    break;
+                } else if (userArray[userArray.length - 1] == konami[konami.length - 1]){
+                    console.log(konami);
+                    console.log(userArray);
+                    alert("Correct code!  You've gained 30 lives!");
+                    userArray = [];
+                    break;
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

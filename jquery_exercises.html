@@ -64,9 +64,25 @@
 
     });
 
+    var mouseEnter = 0;
+
     $('li').hover(
         function() {
-            $(this).css('color', 'red');
+            mouseEnter++;
+            switch(mouseEnter) {
+                case 1:
+                    $(this).css('color', 'red');
+                    break;
+                case 2:
+                    $(this).css('color', 'blue');
+                    break;
+                case 3:
+                    $(this).css('color', 'hotpink');
+                    break;
+                case 4:
+                    $(this).css('color', 'cyan');
+                    mouseEnter = 0;
+            }
         },
         function() {
             $(this).css('color', 'black');
