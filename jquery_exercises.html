@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>jquery exercises</title>
+    <style>
+        .bigCircle{
+            margin-left: 25%;
+            height: 500px;
+            width: 500px;
+            display: none;
+            background-color: hotpink;
+            box-shadow: 1px 1px 300px 300px chartreuse;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
     <div id="pageContent">
@@ -14,14 +26,37 @@
             <li id="dollar" class = "codeup">Dollar dollar bills y'all</li>
             <li class = "codeup">I'm sure we'll find more reasons later</li>
         </ul>
+        <div class = "bigCircle"></div>
     </div>
 <script src="js/jquery-2.x-git.js"></script>
 <script>
     "use strict";
-    $('li').css('font-size', '20px');
-    $('h1, p, li').css('background-color', 'yellow');
-    var callHeader = $('h1').html();
-    alert(callHeader);
+    var clickCount = 0;
+    $('h1').click(function() {
+        clickCount++;
+        switch(clickCount) {
+
+            case 1:
+                $('h1').css('background-color', 'orange');
+                break;
+            case 2:
+                $('h1').css('background-color', 'red');
+                break;
+            case 3:
+                $('h1').css('background-color', 'yellow');
+                break;
+            case 4:
+                $('h1').css('background-color', 'purple');
+                break;
+            case 5:
+                $('h1').css('background-color', 'pink');
+                break;
+            case 6:
+                $('h1').css('background-color', 'cyan');
+                clickCount = 0;
+        }
+
+        });
 
 </script>
 </body>
