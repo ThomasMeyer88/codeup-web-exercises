@@ -16,21 +16,16 @@
         console.log(event.keyCode);
         userArray.push(event.keyCode);
         if(userArray.length == konami.length){
-            for(var i = 0; i < userArray.length; i++){
-                if(userArray[i] !== konami[i]){
-                    console.log(konami);
-                    console.log(userArray);
-                    alert("Wrong Code! Resetting!");
-                    userArray = [];
-                    break;
-                } else if (userArray[userArray.length - 1] == konami[konami.length - 1]){
-                    console.log(konami);
-                    console.log(userArray);
-                    alert("Correct code!  You've gained 30 lives!");
-                    userArray = [];
-                    break;
-                }
-            }
+           if(JSON.stringify(userArray) == JSON.stringify(konami)){
+
+               alert("Correct code!");
+               userArray = [];
+           } else {
+               console.log(userArray);
+               console.log(konami);
+               alert("Wrong Code!");
+               userArray = [];
+           }
         }
     });
 </script>
