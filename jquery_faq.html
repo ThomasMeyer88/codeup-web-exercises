@@ -68,7 +68,9 @@
             $(parentOf).children('li').first().css('color', 'blue');
         });
         $('#makeItYellow').click(function(){
-            $('li').toggleClass('highlight');
+            $('ul').each(function(index, element){
+                $(element).children().last().addClass('highlight');
+            });
         });
     </script>
 </body>
