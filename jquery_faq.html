@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National Park FAQ</title>
+    <style>
+        .invisible{
+            display: none;
+        }
+        .highlight{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>National Park FAQ</h1>
+    <dl>
+        <dt>What is America's First National Park?</dt>
+        <dd class="invisible">Yellowstone</dd>
+        <dt>Which president founded Yellowstone</dt>
+        <dd class="invisible">Ulysseus Grant</dd>
+        <dt>And what year was Yellowstone founded?</dt>
+        <dd class="invisible">It was founded in the year 1872.</dd>
+        <dt>What is the highest point in North America</dt>
+        <dd class="invisible">Mount McKinkley (aka Denali) located in Denal National Park, Alaska</dd>
+        <dt>Is the Grand Canyon the deepest canyon in the world?</dt>
+        <dd class="invisible">No.  The deepest canyon is in the Himalayas.</dd>
+        <dt>How many people visit American national parks per year?</dt>
+        <dd class="invisible">Over 280 million.</dd>
+        <button id="makeItYellow">Highlight List Items</button>
+        <ul>
+            <h3>The Grand Canyon</h3>
+            <li>Objectively the best national park.  Yes, objectively.</li>
+            <li>Located in the lovely state of Arizona.</li>
+            <li>It is up to 18 miles across at it's widest point.</li>
+            <li>It is the 17th national park in the United States.</li>
+            <li>It was established in the year 1919.</li>
+        </ul>
+        <ul>
+            <h3>Denali</h3>
+            <li>Named Mount McKinley in 1896</li>
+            <li>Renamed Denali in 1975 by the state of Alaska</li>
+            <li>The size of the park was tripled in 1980</li>
+            <li>The name Denali was finally recognized by the federal government in 2015</li>
+        </ul>
+        <ul>
+            <h3>Yellowstone</h3>
+            <li>World's first national park!</li>
+            <li>It stretches across three states</li>
+            <li>Record high temperature is 99 degrees fahrenheit</li>
+            <li>Record low temperature is negative 66 degress fahrenheit</li>
+        </ul>
+    </dl>
+    <script src="js/jquery-2.x-git.js"></script>
+    <script>
+        $('dt').click(function(){
+            $(this).toggleClass('highlight');
+            $(this).next().toggleClass('invisible');
+            console.log(this);
+        });
+        $('h3').click(function(){
+            $(this).next().css('font-weight', 'bold');
+
+        });
+
+        $('li').click(function(){
+            var parentOf = $(this).parent();
+            $(parentOf).children('li').first().css('color', 'blue');
+        });
+        $('#makeItYellow').click(function(){
+            $('li').toggleClass('highlight');
+        });
+    </script>
+</body>
+</html>
