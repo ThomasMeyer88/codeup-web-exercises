@@ -13,7 +13,11 @@
     </style>
 </head>
 <body>
-    <h1>National Park FAQ</h1>
+    <div>
+     <h1>Would you like to sign up for our newsletter?</h1>
+     <span>X</span>
+    </div>
+    <h2>Please register for this site</h2>
     <dl>
         <dt>What is America's First National Park?</dt>
         <dd class="invisible">Yellowstone</dd>
@@ -28,23 +32,26 @@
         <dt>How many people visit American national parks per year?</dt>
         <dd class="invisible">Over 280 million.</dd>
         <button id="makeItYellow">Highlight List Items</button>
+        <h3>The Grand Canyon</h3>
+
         <ul>
-            <h3>The Grand Canyon</h3>
             <li>Objectively the best national park.  Yes, objectively.</li>
             <li>Located in the lovely state of Arizona.</li>
             <li>It is up to 18 miles across at it's widest point.</li>
             <li>It is the 17th national park in the United States.</li>
             <li>It was established in the year 1919.</li>
         </ul>
+        <h3>Denali</h3>
+
         <ul>
-            <h3>Denali</h3>
             <li>Named Mount McKinley in 1896</li>
             <li>Renamed Denali in 1975 by the state of Alaska</li>
             <li>The size of the park was tripled in 1980</li>
             <li>The name Denali was finally recognized by the federal government in 2015</li>
         </ul>
+        <h3>Yellowstone</h3>
+
         <ul>
-            <h3>Yellowstone</h3>
             <li>World's first national park!</li>
             <li>It stretches across three states</li>
             <li>Record high temperature is 99 degrees fahrenheit</li>
@@ -59,7 +66,8 @@
             console.log(this);
         });
         $('h3').click(function(){
-            $(this).parent().children('li').css('font-weight', 'bold');
+            $(this).next().children('li').css('font-weight', 'bold');
+            $(this).next().slideDown();
 
         });
 
@@ -72,6 +80,15 @@
                 $(element).children().last().addClass('highlight');
             });
         });
+        $('span').click(function(){
+            $('div').hide();
+        });
+        $('ul').hide();
+        $('h2').hide();
+        var showRegiser = setTimeout(function(){
+            $('h2').slideDown();
+        },8000);
+
     </script>
 </body>
 </html>
