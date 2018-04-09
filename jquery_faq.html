@@ -59,7 +59,7 @@
             console.log(this);
         });
         $('h3').click(function(){
-            $(this).next().css('font-weight', 'bold');
+            $(this).parent().children('li').css('font-weight', 'bold');
 
         });
 
