@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/ajax.css">
+</head>
+<body>
+    <div class="col-12">
+        <div class="row justify-content-center mt-5 mb-5"><h3>Ajax Blog</h3></div>
+        <div class="row justify-content-center"><div id="posts" class="col-6"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Your custom JS goes here -->
+
+    <script>
+        "use strict";
+        $.ajax("data/blog.json").done(function(data, status, jqXhr) {
+            console.log("Request status: " + status);
+            console.log("Data returned from server:");
+            console.log(data);
+            appendPosts(data);
+        });
+        function appendPosts(data){
+            var posts = $('#posts');
+            posts.html("");
+            for(var i = 0; i < data.length; i++) {
+                posts.append("<div class='row'><h6 class='col-6'>"+data[i].title+"</h6><h6 class='col-6'>"+data[i].date+"</h6></div>");
+                posts.append("<div><p>"+data[i].content+"</p></div>");
+                posts.append("<div><p>"+data[i].categories+"</p></div>");
+            }
+        }
+    </script>
+
+</body>
+</html>

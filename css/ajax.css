@@ -1,0 +1,32 @@
+table{
+    text-align: center;
+    background-color: lightgray;
+    border: 3px solid silver;
+}
+
+th{
+    font-weight: bold;
+    font-style: italic;
+}
+
+body{
+    background-color: #eaeaea;
+}
+
+tr, th, td{
+    border: 3px solid silver;
+    padding: 5px;
+}
+
+h3{
+    background-color: lightgray;
+    border: 3px solid silver;
+    padding: 15px 50px 15px 50px;
+    border-radius: 30%;
+    box-shadow: 10px 10px 10px gray;
+}
+h6{
+    background-color: lightgray;
+    border: 2px solid silver;
+    padding: 5px;
+}
