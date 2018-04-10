@@ -10,33 +10,45 @@
             margin-right: 5%;
             border: 1px solid black;
             background-color: skyblue;
-            height: 400px;
-        }
-        h1{
-            margin-left: 5%;
+            height: 325px;
         }
         h3{
+            margin-left: 5%;
+        }
+        h5{
             margin-left: 2%;
         }
         .weatherBox{
             width: 30%;
             float: left;
-            height: 250px;
+            height: 210px;
             margin-left: 2%;
             background-color: aliceblue;
             border: 1px solid black;
             text-align: center;
+            font-size: 10px;
+            font-style: italic;
+        }
+        #map-canvas{
+            margin-top: 50px;
+            width: 70%;
+            height: 400px;
+            margin-left: 15%;
+            margin-right: 15%;
         }
     </style>
 </head>
 <body>
 <div class="weather">
-    <h1>Weather Application</h1>
-    <h3>San Antonio Weather</h3>
+    <h3>Weather Application</h3>
+    <h5 id="cityName"></h5>
     <div id="day1" class="weatherBox"></div>
     <div id="day2" class="weatherBox"></div>
     <div id="day3" class="weatherBox"></div>
 </div>
+<div id="map-canvas">
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbqiJgdVCqlUYcuDzVkFlQWOV4wYYXbog"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
@@ -49,7 +61,8 @@
 
     $.get("http://api.openweathermap.org/data/2.5/forecast?", {
         APPID: "7457baf464b5bf7c9656bda2facf6ed0",
-        q:     "San Antonio",
+        lat: "29.4241",
+        lon: "-98.4936",
         units: "imperial"
     }).done(function(data){
         console.log(data);
@@ -58,6 +71,11 @@
     });
 
     function getForecast(info){
+            $("#day1").html("");
+            $("#day2").html("");
+            $("#day3").html("");
+            $("#cityName").html("");
+            $("#cityName").append(" "+info.city.name);
         for(var i = 0; i<3;i++) {
             var day = $('#day' + (i + 1));
             console.log(day);
@@ -70,7 +88,7 @@
             var wind = info.list[dayCount].wind.speed;
             var pressure = info.list[dayCount].main.pressure;
             var icon = info.list[dayCount].weather[0].icon;
-            day.append("<p>"+tempHigh+"/"+tempLow+"</p>");
+            day.append("<h2>"+tempHigh+"°/"+tempLow+"°</h2>");
             day.append("<img src = 'http://openweathermap.org/img/w/"+icon+".png'>");
             day.append("<p>"+weatherType+": "+weatherInfo);
             day.append("<p>Humidity: " + humidity);
@@ -78,6 +96,51 @@
             day.append("<p>Pressure: " + pressure);
         }
     }
+
+    var mapOptions = {
+        zoom: 5,
+
+        // This sets the center of the map at our location
+        center: {
+            lat: 29.467066,
+            lng: -98.624418
+        },
+        mapTypeId: 'roadmap'
+
+
+
+    };
+
+
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: mapOptions.center,
+        map: map,
+        draggable: true
+    });
+
+    var newLocation = google.maps.event.addListener(marker, 'dragend', function() {
+        var newLat = marker.getPosition().lat();
+        var newLng = marker.getPosition().lng();
+        newWeather(newLat, newLng);
+    });
+
+    function newWeather(lat, lng){
+        $.get("http://api.openweathermap.org/data/2.5/forecast?", {
+            APPID: "7457baf464b5bf7c9656bda2facf6ed0",
+            lat: lat,
+            lon: lng,
+            units: "imperial"
+        }).done(function(data){
+            console.log(data);
+            console.log(data.list[0].main.temp_max);
+            getForecast(data);
+        });
+    }
+
+
 </script>
 </body>
 </html>
