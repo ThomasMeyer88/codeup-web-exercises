@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+    <style>
+        .weather{
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            border: 1px solid black;
+            background-color: skyblue;
+            height: 400px;
+        }
+        h1{
+            margin-left: 5%;
+        }
+        h3{
+            margin-left: 2%;
+        }
+        .weatherBox{
+            width: 30%;
+            float: left;
+            height: 250px;
+            margin-left: 2%;
+            background-color: aliceblue;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="weather">
+    <h1>Weather Application</h1>
+    <h3>San Antonio Weather</h3>
+    <div id="day1" class="weatherBox"></div>
+    <div id="day2" class="weatherBox"></div>
+    <div id="day3" class="weatherBox"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    "use strict";
+    // $.get("https://api.darksky.net/forecast/506ee2f6ac7798a67c04f69f807993cd/29.4241, -98.4936", {
+    //
+    // }).done(function(data) {
+    //     console.log(data);
+    // });
+
+    $.get("http://api.openweathermap.org/data/2.5/forecast?", {
+        APPID: "7457baf464b5bf7c9656bda2facf6ed0",
+        q:     "San Antonio",
+        units: "imperial"
+    }).done(function(data){
+        console.log(data);
+        console.log(data.list[0].main.temp_max);
+        getForecast(data);
+    });
+
+    function getForecast(info){
+        for(var i = 0; i<3;i++) {
+            var day = $('#day' + (i + 1));
+            console.log(day);
+            var dayCount = i * 8;
+            var tempHigh = parseInt(info.list[dayCount].main.temp_max);
+            var tempLow = parseInt(info.list[dayCount].main.temp_min);
+            var weatherType = info.list[dayCount].weather[0].main;
+            var weatherInfo = info.list[dayCount].weather[0].description;
+            var humidity = info.list[dayCount].main.humidity;
+            var wind = info.list[dayCount].wind.speed;
+            var pressure = info.list[dayCount].main.pressure;
+            var icon = info.list[dayCount].weather[0].icon;
+            day.append("<p>"+tempHigh+"/"+tempLow+"</p>");
+            day.append("<img src = 'http://openweathermap.org/img/w/"+icon+".png'>");
+            day.append("<p>"+weatherType+": "+weatherInfo);
+            day.append("<p>Humidity: " + humidity);
+            day.append("<p>Wind: " + wind);
+            day.append("<p>Pressure: " + pressure);
+        }
+    }
+</script>
+</body>
+</html>
