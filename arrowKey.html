@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow Test</title>
+    <style>
+        #ball {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: red;
+            border: 5px solid darkred;
+        }
+
+        #1{
+            background: transparent;
+        }
+
+    </style>
+</head>
+
+<body onload="docReady()" onkeydown="" onkeyup="" bgcolor='white'>
+Test
+<div id="1" style="position:absolute;left:35px; top:35px; height: 35px; width: 35px;">&nbsp;</div>
+</body>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Test Move Object</title>
+
+    <script type="text/javascript">
+        var upInterval;
+        var downInterval;
+        var frame = 0;
+        document.getElementById('1').style.backgroundImage = "url('img/luigi_run_right_1.png')";
+
+        function leftArrowPressed() {
+            var element = document.getElementById("image1");
+            console.log(element);
+            element.style.left = parseInt(element.style.left) - 20 + 'px';
+        }
+
+        function rightArrowPressed() {
+            frame++;
+            var element = document.getElementById("1");
+            element.style.left = parseInt(element.style.left) + 20 + 'px';
+            if(frame % 2 == 0) {
+                document.getElementById('1').style.backgroundImage = "url('img/luigi_run_right_2.png')";
+            } else {
+                document.getElementById('1').style.backgroundImage = "url('img/luigi_run_right_1.png')";
+
+            }
+
+
+        }
+
+        function upArrowPressed() {
+            var element = document.getElementById("1");
+            var counter = 0;
+            var id = setInterval(frame, 15);
+            function frame() {
+                if (counter == 50) {
+                    clearInterval(id);
+                    downFall();
+                } else {
+                    console.log("jumping");
+                    counter++;
+                    element.style.top = parseInt(element.style.top) - 3 + 'px';
+                    element.style.left = parseInt(element.style.left) + 1 + 'px';
+
+                }
+            }
+
+        }
+
+
+
+        function downFall(){
+            var element = document.getElementById("1");
+            var counter = 0;
+            var id = setInterval(frame, 15);
+            function frame() {
+                if (counter == 50) {
+                    clearInterval(id);
+                } else {
+                    console.log("jumping");
+                    counter++;
+                    element.style.top = parseInt(element.style.top) + 3 + 'px';
+                    element.style.left = parseInt(element.style.left) + 1 + 'px';
+
+                }
+            }
+
+        }
+
+        function downArrowPressed() {
+            var element = document.getElementById("1");
+            element.style.top = parseInt(element.style.top) + 20 + 'px';
+        }
+
+        function moveSelection(evt) {
+            switch (evt.keyCode) {
+                case 37:
+                    leftArrowPressed();
+                    break;
+                case 39:
+                    rightArrowPressed();
+                    break;
+                case 38:
+                    upArrowPressed();
+                    break;
+                case 40:
+                    downArrowPressed();
+                    break;
+            }
+        }
+
+
+
+
+        function docReady()
+        {
+
+            window.addEventListener('keydown', moveSelection);
+        }
+
+    </script>
+
+
+</html>

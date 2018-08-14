@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zzzZzzz</title>
+    <style>
+        #z{
+            border-radius: 50%;
+            margin-top: 100px;
+            margin-left: 100px;
+            background-color: red;
+            background-image: url("https://www.vetbabble.com/wp-content/uploads/2018/02/scared-cat.jpg");
+            background-size: 1px 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="z"></div>
+
+<script src="js/jquery-2.x-git.js"></script>
+<script>
+    var string = "o";
+    var size = 0;
+    var makeCircle = setInterval(function(){
+
+
+        $('#z').css('width', size);
+        $('#z').css('height', size);
+
+        $('#z').css('background-size', size+size);
+
+            size++;
+
+    },5);
+</script>
+</body>
+</html>
